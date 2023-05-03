@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/patient_list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/lk.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <title>Пациенты</title>
+    <script src="{% static 'js/lk.js' %}"></script>
+    {{ request.user.id|json_script:"user_id" }}
+    <link rel="icon" href="{% static 'image/favicon.ico' %}">
+</head>
+
+<body>
+    <header class='header'>
+        <div class='header__content'>
+            <div class="header__item header__title">
+                <a href="{% url 'index' %}" style="display:flex;justify-content:center;align-items:center;">
+                    <img src="{% static 'image/logo.jpg' %}" class="header__logo">
+                    Мир здоровья
+                </a>
+            </div>
+            <div class="header__actions">
+                <div class="header__item header__action nickname" id="nickname">
+                    {{ current_user.user }}
+                </div>
+                {% if current_user.avatar is None %}
+                <img class="avatar" src="../static/image/no_photography.png" />
+                {% else %}
+                <img class="avatar" src="{{ current_user.avatar.url }}" />
+                {% endif %}
+                <a class="header__item header__action" href="{% url 'login' %}">
+                    Выйти
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="column detail_box">
+            <div class="patient_title">Ваши данные</div>
+            <div class="white_box">
+                <div class="white_box__content scrollable">
+                    <div class="main_information">
+                        <div class="avatar_edit">
+                            <img class="big_avatar" id="big_avatar" src="{% static 'image/patient.jpg' %}" />
+                            
+                            <form id="avatar_form">
+                                <input type="file" id="selectedFile" style="display: none;" />
+                            </form>
+                            <input type="button" value="Сменить аватарку"
+                                onclick="document.getElementById('selectedFile').click();" />
+                        </div>
+                        <div class="name_and_born">
+                            <div class="name_and_born__item">Имя:
+                                <div id="firstname" class="editable">Имя</div>
+                                <img src="{% static 'image/edit_icon.png' %}" alt="edit_icon" height="50px" width="50px"
+                                    id="firstname_edit_icon" class="edit_icon">
+                            </div>
+                            <div class="name_and_born__item">Фамилия:
+                                <div id="surname" class="editable">Фамилия</div>
+                                <img src="{% static 'image/edit_icon.png' %}" alt="edit_icon" height="50px" width="50px"
+                                    id="surname_edit_icon" class="edit_icon">
+                            </div>
+                            <div class="name_and_born__item">Отчество:
+                                <div id="middlename" class="editable">Отчество</div>
+                                <img src="{% static 'image/edit_icon.png' %}" alt="edit_icon" height="50px" width="50px"
+                                    id="middlename_edit_icon" class="edit_icon">
+                            </div>
+                            <div class="name_and_born__item">Дата рождения:
+                                <div id="date_of_birth" class="editable">23.05.2001</div>
+                                <img src="{% static 'image/edit_icon.png' %}" alt="edit_icon" height="50px" width="50px"
+                                    id="date_of_birth_edit_icon" class="edit_icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="information">
+                        <div class="information_block">
+                            <p class="information_block__title">
+                                Адрес:
+                            </p>
+                            <p class="information_block__description editable" id="address">
+                                Адрес
+                            </p>
+                            <img src="{% static 'image/edit_icon.png' %}" alt="edit_icon" height="50px" width="50px"
+                                id="address_edit_icon" class="edit_icon">
+
+                        </div>
+
+                        <div class="information_block">
+                            <p class="information_block__title">
+                                Email:
+                            </p>
+                            <p class="information_block__description editable" id="email">
+                                Email
+                            </p>
+                            <img src="{% static 'image/edit_icon.png' %}" alt="edit_icon" height="50px" width="50px"
+                                id="email_edit_icon" class="edit_icon">
+                        </div>
+
+                        <div class="password_block">
+                            <p class="information_block__title">
+                                Пароль:
+                            </p>
+                            <p style="font-size: 20px;">
+                                Для изменения пароля потребуется ввести старый пароль
+                            </p>
+                            <label>Старый пароль: <input type="password" id="old_password" /> </label>
+                            <label>Новый пароль: <input type="password" id="new_password" /> </label>
+                            <label>Новый пароль ещё раз: <input type="password" id="new_password_again" /> </label>
+                            <button class="btn" id="password_btn">Изменить пароль</button>
+                        </div>
+
+                        {% if current_user.type == "doctor" %}
+                        <div class="patient_block">
+                            <p class="information_block__title">
+                                Список пациентов:
+                            </p>
+                            <p style="font-size:20px;">Вы можете прикрепить к себе пациента, нажав на иконку "+" на
+                                карточке
+                                пациента и открепить от себя пациента нажав на "х".</p>
+                            <div class="patient_list" id="patient_list">
+
+                            </div>
+                        </div>
+
+                        {% endif %}
+                        {% if current_user.type == "patient" %}
+                        <div class="equipment_block">
+                            <p class="information_block__title">
+                                Список оборудования:
+                            </p>
+                            <p style="font-size:20px;">Вы можете прикрепить к себе оборудование, нажав на иконку "+" на
+                                карточке
+                                оборудования и открепить от себя оборудование нажав на "х".</p>
+                            <div class="equipment_list" id="equipment_list">
+
+                            </div>
+                        </div>
+
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>

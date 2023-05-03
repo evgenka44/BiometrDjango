@@ -1,0 +1,89 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: monospace;
+}
+
+.login_form {
+    width: 570px;
+    height: 80%;
+    background-color: #C5C3FF;
+    border-radius: 20px;
+    margin: auto auto;
+    display: flex;
+}
+
+.login_form__content {
+    width: 570px;
+    padding: 40px 70px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+.field_input {
+    height: 74px;
+    font-size: 30px;
+    padding: 0px 10px;
+    border-radius: 19px;
+    border: none;
+}
+
+.field_label {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("../image/arrow.png");
+    background-size: 6%;
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    border: 1px solid #dfdfdf;
+}
+
+.btn {
+    cursor: pointer;
+    display: flex;
+    border: none;
+    width: 360px;
+    height: 70px;
+    background-color: #D2F7B5;
+    border-radius: 15px;
+    font-size: 20px;
+    font-family: sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.field_input_incorrect {
+    background-color: #F5C5C5;
+}
+
+.incorrect_hidden {
+    visibility: collapse;
+}
+
+.incorrect {
+    color: red;
+}

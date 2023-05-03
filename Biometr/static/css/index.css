@@ -1,0 +1,103 @@
+header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    background-color: #C5C3FF;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-family: monospace;
+}
+
+.header__logo {
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+}
+
+.header__content {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+.header__item {
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    font-family: sans-serif;
+}
+
+.header__action {
+    font-size: 12px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: start;
+}
+
+.main__title {
+    display: table;
+    margin: auto auto;
+    font-size: 30px;
+}
+
+.slide__text {
+    position: relative;
+    animation: start_animation 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes start_animation {
+    from {
+        font-size: 0;
+        opacity: 0
+    }
+
+    to {
+        font-size: 30px;
+        opacity: 1
+    }
+}
+
+@keyframes end_animation {
+    from {
+        font-size: 30px;
+        opacity: 1;
+    }
+
+    to {
+        font-size: 30px;
+        opacity: 0;
+    }
+}
+
+
+
+.header__actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 150px;
+    align-items: center;
+    text-decoration: none;
+}

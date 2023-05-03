@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <script>var exports = {};</script>
+    <script src="{% static 'js/registration.js' %}"></script>
+    <link rel="icon" href="{% static 'image/favicon.ico' %}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__content">
+            <div class="header__item header__title">
+                <a href="{% url 'index' %}" style="display:flex;justify-content:center;align-items:center;">
+                    <img src="{% static 'image/logo.jpg' %}" class="header__logo">
+                    Мир здоровья
+                </a>
+            </div>
+            <div class="header__actions">
+                <a class="header__item header__action" href="{% url 'login' %}">
+                    Войти
+                </a>
+                <a class="header__item header__action" href="{% url 'registration' %}">
+                    Регистрация
+                </a>
+            </div>
+        </div>
+    </header>
+    <form class="login_form" id="login_form">
+        <div class="login_form__content" id="login_form__content">
+            <div class="form__field">
+                <label for="username" class="field_label">Логин</label>
+                <input type="text" id="username" class="field_input" name="username" required>
+            </div>
+            <div class="form__field">
+                <label for="password" class="field_label">Пароль</label>
+                <input type="password" id="password" name="password" class="field_input" required>
+            </div>
+            <div class="form__field">
+                <label for="password_again" class="field_label">Пароль ещё раз</label>
+                <input type="password" id="password_again" name="password" class="field_input" required>
+            </div>
+            <div class="form__field">
+                <label for="email" class="field_label">Электронная почта</label>
+                <input type="text" id="email" class="field_input" name="email" required>
+            </div>
+            <div class="form__field">
+                <label for="type" class="field_label">Кем вы являетесь?</label>
+                <select class="field_input" id="type">
+                    <option value="doctor">Врач</option>
+                    <option value="patient">Пациент</option>
+                </select>
+            </div>
+            <div class="form__field hidden" id="doctors_block">
+                <label for="doctors_select" class="field_label">Выберите своего лечащего врача</label>
+                <select class="field_input" id="doctors_select">
+                </select>
+            </div>
+            <button type="submit" class="btn" id="register_btn">Зарегистрироваться</button>
+        </div>
+    </form>
+</body>
+
+</html>

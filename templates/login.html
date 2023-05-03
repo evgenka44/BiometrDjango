@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Войти</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <script src="{% static 'js/login.js' %}"></script>
+    <link rel="icon" href="{% static 'image/favicon.ico' %}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__content">
+            <div class="header__item header__title">
+                <a href="{% url 'index' %}" style="display:flex;justify-content:center;align-items:center;">
+                    <img src="{% static 'image/logo.jpg' %}" class="header__logo">
+                    Мир здоровья
+                </a>
+            </div>
+            <div class="header__actions">
+                <a class="header__item header__action" href="{% url 'login' %}">
+                    Войти
+                </a>
+                <a class="header__item header__action" href="{% url 'registration' %}">
+                    Регистрация
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <form class="login_form" id="my_form">
+            <div class="login_form__content">
+                <div class="form__fields">
+                    <div class="form__field" style="padding: 0 0 20px 0">
+                        <label for="username" class="field_label">Логин</label>
+                        <input type="text" id="username" class="field_input" name="username" required>
+                    </div>
+                    <div class="form__field">
+                        <label for="password" class="field_label">Пароль</label>
+                        <input type="password" id="password" name="password" class="field_input" required>
+                        <div id="incorrect_credentials" class="incorrect incorrect_hidden">
+                            Неправильный логин или пароль
+                        </div>
+                    </div>
+                </div>
+                <button class="btn form__button" type="submit" id="login_btn">
+                    Войти
+                </button>
+        </form>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/patient_list.css' %}" />
+    <title>Главная</title>
+    <link rel="icon" href="{% static 'image/favicon.ico' %}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__content">
+            <div class="header__item header__title">
+                <a href="{% url 'index' %}" style="display:flex;justify-content:center;align-items:center;">
+                    <img src="{% static 'image/logo.jpg' %}" class="header__logo">
+                    Мир здоровья
+                </a>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="header__actions">
+                <a class="header__item header__action nickname" id="nickname" href="{% url 'lk' %}">
+                    {{ current_user.user }}
+                </a>
+                {% if current_user.avatar is None %}
+                <img class="avatar" src="../static/image/no_photography.png" />
+                {% else %}
+                <img class="avatar" src="{{ current_user.avatar }}" />
+                {% endif %}
+                <a class="header__item header__action" href="{% url 'login' %}">
+                    Выйти
+                </a>
+            </div>
+            {% else %}
+            <div class="header__actions">
+                <a class="header__item header__action" href="{% url 'login' %}">
+                    Войти
+                </a>
+                <a class="header__item header__action" href="{% url 'registration' %}">
+                    Регистрация
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <video width="100%" id="video_background" preload="auto" no-controls autoplay playsinline muted>
+            <source src="{% static 'video/intro.mp4' %}" type="video/mp4">
+        </video>
+
+        <!-- <div class="main__title slide__text">
+        Добро пожаловать в компанию!
+    </div> -->
+    </main>
+</body>
+
+</html>
