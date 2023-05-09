@@ -25,8 +25,8 @@ window.onload = function () {
         }
         else {
             const patientsListHtml = document.getElementById("patient_list").children;
-            addListenersToEditIcons();
             try {
+                addListenersToEditIcons();
                 onPatientClick(patientsListHtml[0].id);
                 for (var i = 0; i < patientsListHtml.length; i++) {
                     const patientId = patientsListHtml[i].id;
