@@ -1,5 +1,5 @@
-const BASE_URL = "http://127.0.0.1:8000/"
-const BASE_URL_API = "http://127.0.0.1:8000/api/v1/"
+const BASE_URL = "http://77.232.138.70:8000/"
+const BASE_URL_API = "http://77.232.138.70:8000/api/v1/"
 const editableFields = ["firstname", "surname", "middlename", "email", "address", "date_of_birth"]
 let currentUserId = null
 let currentUser = null

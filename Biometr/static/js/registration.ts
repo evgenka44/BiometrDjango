@@ -1,3 +1,6 @@
+const BASE_URL = "http://77.232.138.70:8000/"
+const BASE_URL_API = "http://77.232.138.70:8000/api/v1/"
+
 window.onload = function () {
     const registerButton = document.getElementById("register_btn") as HTMLInputElement
     const passwordField = document.getElementById("password") as HTMLInputElement
@@ -57,7 +60,7 @@ function onRegister(
             doctor: typeSelect.value === "patient" ? doctorsSelect.value : null,
         }).then((isSuccess) => {
             if (isSuccess) {
-                window.location.replace("http://127.0.0.1:8000/users/");
+                window.location.replace(BASE_URL + "users/");
             } else {
                 alert("Логин занят")
             }
@@ -119,7 +122,7 @@ function onTypeSelectChange(
     if (typeSelect.value == "patient") {
         doctorsBlock.classList.remove("hidden")
         loginFormElement.style.height = loginFormElement.offsetHeight + 100 + "px"
-        getDataFromApi("http://127.0.0.1:8000/api/v1/users/?type=doctor").then((response) => {
+        getDataFromApi(BASE_URL_API + "users/?type=doctor").then((response) => {
             console.log(response)
             response.forEach(doctor => {
                 console.log(response[0])
@@ -154,8 +157,6 @@ async function postDataToApi(url = "", data) {
     return response.json(); // parses JSON response into native JavaScript objects
 }
 
-const BASE_URL = "http://127.0.0.1:8000/"
-const BASE_URL_API = "http://127.0.0.1:8000/api/v1/"
 
 async function getDataFromApi(url = "") {
     const response = await fetch(url, {

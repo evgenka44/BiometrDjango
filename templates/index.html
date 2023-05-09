@@ -22,13 +22,17 @@
             </div>
             {% if request.user.is_authenticated %}
             <div class="header__actions">
+                <a class="header__item header__action"
+                    href="{% url 'patient_list'%}">
+                    Пользователи
+                </a>
                 <a class="header__item header__action nickname" id="nickname" href="{% url 'lk' %}">
                     {{ current_user.user }}
                 </a>
                 {% if current_user.avatar is None %}
                 <img class="avatar" src="../static/image/no_photography.png" />
                 {% else %}
-                <img class="avatar" src="{{ current_user.avatar }}" />
+                <img class="avatar" src="{{ current_user.avatar.url }}" />
                 {% endif %}
                 <a class="header__item header__action" href="{% url 'login' %}">
                     Выйти
@@ -47,10 +51,10 @@
         </div>
     </header>
     <main>
-        <video width="100%" id="video_background" preload="auto" no-controls autoplay playsinline muted>
+        <video height="100%" id="video_background" preload="auto" disablePictureInPicture no-controls autoplay data-inline-media playsinline muted>
             <source src="{% static 'video/intro.mp4' %}" type="video/mp4">
         </video>
-
+        <!-- <img src="../static/image/intro.gif"> -->
         <!-- <div class="main__title slide__text">
         Добро пожаловать в компанию!
     </div> -->

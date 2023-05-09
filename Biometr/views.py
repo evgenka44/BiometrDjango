@@ -220,11 +220,12 @@ class ValuesViewSet(viewsets.ModelViewSet):
     queryset = models.Values.objects.all()
     serializer_class = serializers.Values
 
-    @action(detail=True, methods=['get'])
+    @action(detail=False, methods=['get'])
     def search(self, request):
+        print('search')
         user_id = self.request.query_params.get("user_id")
         equipment_id = self.request.query_params.get("equipment_id")
-
+        print(user_id, equipment_id)
         searched_values = models.Values.objects.filter(
             id_type=equipment_id, id_user=user_id)
 

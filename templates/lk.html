@@ -23,6 +23,10 @@
                 </a>
             </div>
             <div class="header__actions">
+                <a class="header__item header__action"
+                    href="{% url 'patient_list'%}">
+                    Пользователи
+                </a>
                 <div class="header__item header__action nickname" id="nickname">
                     {{ current_user.user }}
                 </div>

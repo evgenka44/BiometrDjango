@@ -7,15 +7,6 @@ class Human(models.Model):
         ("doctor", "Доктор"),
         ("patient", "Пациент"),
     ]
-    
-    # password = models.CharField(max_length=255, verbose_name="Пароль", validators=[validators.MinLengthValidator(4)])
-    # username = models.CharField(max_length=255, verbose_name="Логин", unique=True, validators=[
-    #     validators.MinLengthValidator(4),
-    # ])
-    # created_at = models.DateTimeField(verbose_name="Когда создан", auto_now_add=True)
-    # email = models.EmailField(max_length=255, verbose_name="Электронная почта", unique=True)
-    # firstname = models.CharField(max_length=255, verbose_name="Имя", default="Имя")
-    # surname = models.CharField(max_length=255, verbose_name="Фамилия", default="Фамилия")
     user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE)
     type = models.CharField(
         max_length=255,
@@ -62,4 +53,4 @@ class Values(models.Model):
     value = models.CharField(max_length=255, verbose_name="Значение")
 
     def __str__(self):
-        return f"{self.id_type.name}, {self.id_user.surname}, {self.time},{self.value}"
+        return f"{self.id_type.name}, {self.id_user.user.last_name}, {self.time},{self.value}"

@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const BASE_URL = "http://127.0.0.1:8000/";
-const BASE_URL_API = "http://127.0.0.1:8000/api/v1/";
+const BASE_URL = "http://77.232.138.70:8000/";
+const BASE_URL_API = "http://77.232.138.70:8000/api/v1/";
 window.onload = () => {
     const loginBtn = document.getElementById("login_btn");
     const usernameField = document.getElementById("username");
@@ -38,7 +38,7 @@ function loginBtnClick(event) {
         password: password.value
     }).then((response) => {
         if (response) {
-            window.location.replace("http://127.0.0.1:8000/users/");
+            window.location.replace(BASE_URL + "users/");
         }
         else {
             document.getElementById("incorrect_credentials").classList.remove("incorrect_hidden");

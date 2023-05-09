@@ -22,6 +22,10 @@
                 </a>
             </div>
             <div class="header__actions">
+                <a class="header__item header__action"
+                    href="{% url 'patient_list'%}">
+                    Пользователи
+                </a>
                 <a class="header__item header__action nickname" id="nickname"
                     href="{% url 'lk'%}">
                     {{ current_user.user }}
@@ -29,7 +33,7 @@
                 {% if current_user.avatar is None %}
                 <img class="avatar" src="../static/image/no_photography.png" />
                 {% else %}
-                <img class="avatar" src="{{ current_user.avatar }}" />
+                <img class="avatar" src="{{ current_user.avatar.url }}" />
                 {% endif %}
                 <div class="header__item header__action" id="logout_btn">
                     Выйти
@@ -49,7 +53,7 @@
                     {% for patient in patient_list %}
                     <div class="patient_card" id="{{ patient.id }}" onClick="onPatientClick({{ patient.id }})">
                         <img class="avatar" id="avatar_{{ patient.id }}" src="{% static 'image/patient.jpg' %}">
-                        <span class="patient_card__fio">{{ patient.firstname }} {{ patient.surname }}</span>
+                        <span class="patient_card__fio">{{ patient.user.first_name }} {{ patient.user.last_name }}</span>
                     </div>
                     {% endfor %}
 

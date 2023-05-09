@@ -55,7 +55,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 200px;
+    width: 300px;
     align-items: center;
     text-decoration: none;
 }
@@ -171,7 +171,7 @@ element_box
 .equipment_item {
     margin-top: 20px;
     width: 545px;
-    height: 472px;
+    height: fit-content;
     border-radius: 23px;
     background-color: #C5C3FF;
     padding: 25px;
@@ -192,7 +192,7 @@ element_box
 
 .equipment_item__values {
     padding: 10px;
-    height: 381px;
+    height: fit-content;
     background-color: white;
     border-radius: 23px;
 }

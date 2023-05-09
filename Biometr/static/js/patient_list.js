@@ -11,8 +11,8 @@ let currentPatientId = null;
 let currentUserId = null;
 let currentUser = null;
 const selectedClass = "patient_card__selected";
-const BASE_URL = "http://127.0.0.1:8000/";
-const BASE_URL_API = "http://127.0.0.1:8000/api/v1/";
+const BASE_URL = "http://77.232.138.70:8000/";
+const BASE_URL_API = "http://77.232.138.70:8000/api/v1/";
 const editableFields = ["anamnesis", "diagnosis"];
 window.onload = function () {
     const logoutButton = document.getElementById("logout_btn");
@@ -32,14 +32,11 @@ window.onload = function () {
                     const patientId = patientsListHtml[i].id;
                     const avatar = patientsListHtml[i].getElementsByClassName("avatar")[0];
                     getDataFromApi(BASE_URL_API + "users/" + patientId + "/").then((user) => {
-                        console.log(user);
-                        console.log("avatar=" + user.avatar);
-                        console.log(avatar[0]);
                         if (user.avatar === null) {
-                            avatar[0].src = "../static/image/no_photography.png";
+                            avatar.src = "../static/image/no_photography.png";
                         }
                         else {
-                            avatar[0].src = user.avatar;
+                            avatar.src = user.avatar;
                         }
                     });
                 }
@@ -53,7 +50,7 @@ window.onload = function () {
 function logout() {
     getDataFromApi(BASE_URL + "logout/").then((isSuccess) => {
         if (isSuccess) {
-            window.location.replace("http://127.0.0.1:8000/login/");
+            window.location.replace(BASE_URL + "login/");
         }
     });
 }
@@ -103,14 +100,13 @@ function fillPatientCard(id) {
     const equipments = document.getElementById("equipments");
     const bigAvatar = document.getElementById("big_avatar");
     getDataFromApi(BASE_URL_API + "users/" + id + "/").then((user) => {
-        console.log(user);
         if (user.avatar === null) {
             bigAvatar.src = "../static/image/no_photography.png";
         }
         else {
             bigAvatar.src = user.avatar;
         }
-        name.innerText = user.surname + " " + user.firstname + " " + user.middlename;
+        name.innerText = user.user.last_name + " " + user.user.first_name + " " + user.middlename;
         dateOfBirth.innerText = " " + user.date_of_birth;
         anamnesis.innerText = user.anamnesis;
         diagnosis.innerText = user.diagnosis;
